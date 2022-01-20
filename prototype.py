@@ -42,6 +42,7 @@ class Prototype:
 
 class Question:
     """ Question class with title and content of question """
+
     def __init__(self, title, content):
         self.title = title
         self.content = content
@@ -49,6 +50,7 @@ class Question:
 
 class ExamSheet:
     """ ExamSheet class with list of questions and student name """
+
     def __init__(self, questions, student_name):
         self.questions = questions
         self.student_name = student_name
@@ -56,17 +58,25 @@ class ExamSheet:
     def __str__(self):
         return f"{self.student_name} - {id(self)}"
 
+    def clone(self, student_name):
+        """ Clone ExamSheet by using prototype class """
+        prototype_instance = Prototype()
+        prototype_instance.register_object('exam_sheet', self)
+        return prototype_instance.clone('exam_sheet', student_name=student_name)
+
 
 if __name__ == '__main__':
+    # Create questions
     q1 = Question('question1', 'what is ...')
     q2 = Question('question2', 'what is ...')
     q3 = Question('question3', 'what is ...')
 
+    # students name
     students_list = ['Gloria Cantu', 'Winston Cardenas', 'Konner Coleman', 'Stella Cuevas']
+
+    """ Create ExamSheet instance"""
     exam_sheet = ExamSheet([q1, q2, q3], 'Amir Mohtasham')
-    prototype_instance = Prototype()
-    prototype_instance.register_object('exam_sheet', exam_sheet)
 
     for student in students_list:
-        exam = prototype_instance.clone('exam_sheet', student_name=student)
+        exam = exam_sheet.clone(student)
         print(exam)
