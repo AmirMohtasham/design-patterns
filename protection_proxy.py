@@ -51,6 +51,7 @@ class PostProxy(IPost):
         self.user = user
 
     def edit_post(self, new_title, new_content):
+        """ check user can edit this post (Protection Proxy) """
         if self.post.user == self.user:
             self.post.edit_post(new_title, new_content)
             return True
