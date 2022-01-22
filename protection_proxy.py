@@ -12,7 +12,7 @@ To put it simply:
     We can restrict access to an object without changing its class
 
 *Use cases:
-    1- Protection Proxy
+    1- Protection Proxy (below example is for this item)
     2- Logging Proxy
     3- Virtual Proxy(Lazy initialization)
 """
