@@ -15,37 +15,21 @@ class IState(ABC):
     def allowed(self):
         pass
 
-    @abstractmethod
-    def change_state(self):
-        pass
-
 
 class Archive(IState):
     allowed = []
-
-    def change_state(self):
-        print('change task status as archive')
 
 
 class Done(IState):
     allowed = [Archive]
 
-    def change_state(self):
-        print('change task status as done')
-
 
 class InProgress(IState):
     allowed = [Done]
 
-    def change_state(self):
-        print('change task status as in progress')
-
 
 class New(IState):
     allowed = [InProgress]
-
-    def change_state(self):
-        print('change task status as new')
 
 
 class Task:
